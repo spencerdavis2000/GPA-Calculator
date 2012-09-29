@@ -12,8 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-//import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -57,6 +56,8 @@ public class calculate extends Activity implements View.OnClickListener {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.calculate);
+		
+		
 		//wire up Spinner (drop down menu)
 		class1 = (Spinner)findViewById(R.id.spinClass1);
 		class2 = (Spinner)findViewById(R.id.spinClass2);
@@ -74,7 +75,6 @@ public class calculate extends Activity implements View.OnClickListener {
 		//wire up Buttons
 		next = (Button)findViewById(R.id.bNext);
 		finish = (Button)findViewById(R.id.bFinish);
-		
 		
 		
 		//wire up Spinner Items
@@ -95,9 +95,8 @@ public class calculate extends Activity implements View.OnClickListener {
 		double vari = ((variables)getApplication()).getTotalGPA();
 		displayGPA.setText("Current GPA: " + df.format(vari));
 		
-		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-		imm.hideSoftInputFromWindow(class01.getWindowToken(), 0);
-		
+		//hide keyboard onLoad
+		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 	}
 
 	public void onClick(View v) {
@@ -108,6 +107,7 @@ public class calculate extends Activity implements View.OnClickListener {
 			//first, check for Null EditText and selected spinner:
 			//if true, then give a toast message
 			//else, perform the calculations and fire the Intent
+			
 			if(isSpinnerSelectedAndEditTextNull())
 			{
 				alert(getBaseContext(), "Please enter credits for one of the classes");

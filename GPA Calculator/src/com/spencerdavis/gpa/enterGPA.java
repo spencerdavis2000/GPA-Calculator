@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -31,6 +32,9 @@ public class enterGPA extends Activity {
 		currentGPA = (EditText)findViewById(R.id.etEnterGPA);
 		currentCredits = (EditText)findViewById(R.id.etEnterTotalCredits);
 		calculate = (Button)findViewById(R.id.bCalculate);
+		
+		//hide keyboard onLoad
+		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		
 		//reset everything just in case it remembers anything
 		((variables)getApplication()).setTotalGradePoints(0.0);

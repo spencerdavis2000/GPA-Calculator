@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -41,6 +42,9 @@ public class setGradeMapping extends Activity{
 		D = (EditText)findViewById(R.id.etD);
 		Dminus = (EditText)findViewById(R.id.etDminus);
 		F = (EditText)findViewById(R.id.etF);
+		
+		//hide keyboard onLoad
+		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		
 	
 		
@@ -149,6 +153,7 @@ public class setGradeMapping extends Activity{
 				startActivity(start);
 			}
 		});
+		
 	}
 
 	
